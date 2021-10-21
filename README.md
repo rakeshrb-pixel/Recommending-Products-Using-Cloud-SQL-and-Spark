@@ -121,14 +121,7 @@ SHOW DATABASES;
 
 You should see the default system databases:
 
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
+![image](https://user-images.githubusercontent.com/60198979/138275940-b41e00d5-405d-4711-b2f4-513c16688474.png)
 
 Copy and paste the below SQL statement you analyzed earlier into the command line.
 
@@ -171,15 +164,9 @@ SHOW DATABASES;
 Press ENTER
 
 Confirm that you now see recommendation_spark as a database:
-+----------------------+
-| Database             |
-+----------------------+
-| information_schema   |
-| mysql                |
-| performance_schema   |
-| recommendation_spark |
-| sys                  |
-+----------------------+
+
+![image](https://user-images.githubusercontent.com/60198979/138276007-411f103c-4d03-41cb-b04d-a01ee86b309f.png)
+
 
 Run the following command to show the tables:
 
@@ -190,13 +177,8 @@ Press ENTER.
 
 Confirm that you see the three tables:
 
-+--------------------------------+
-| Tables_in_recommendation_spark |
-+--------------------------------+
-| Accommodation                  |
-| Rating                         |
-| Recommendation                 |
-+--------------------------------+
+![image](https://user-images.githubusercontent.com/60198979/138276059-6330cf21-abe6-4a1f-b444-ae8e8856d4e8.png)
+
 
 Run the following query:
 
