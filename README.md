@@ -468,15 +468,8 @@ WHERE r.userid = 10;
 Your result should be similar to the below result:
   
 
-| userid | accoid | prediction | title                       |
+![image](https://user-images.githubusercontent.com/60198979/138275643-1300195f-c577-491c-8279-93d61f385673.png)
 
-| 10     | 41     |  1.7748766 | Big Calm Manor              |
-| 10     | 21     |  1.7174504 | Big Peaceful Cabin          |
-| 10     | 46     |  1.7159091 | Colossal Private Castle     |
-| 10     | 31     |  1.5783813 | Colossal Private Castle     |
-| 10     | 32     |  1.5584077 | Immense Private Hall        |
-
-  
  These are the five accommodations that you would recommend. Note that the quality of the recommendations is not great because the dataset was so small (note that the predicted ratings are not very high). Still, this lab illustrates the process you'd go through to create product recommendations.
   
 # Recap:
