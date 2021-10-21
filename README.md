@@ -412,5 +412,80 @@ gsutil cp train_and_apply.py gs://$DEVSHELL_PROJECT_ID
 }
   
 # Task 8. Run your ML job on Dataproc
+  
+In the Dataproc console, click rentals cluster.
+
+Click Submit job.
+
+For Job type, select PySpark and for Main python file, specify the location of the Python file you uploaded to your bucket. Your <bucket-name> is likely to be your Project ID, which you can find by clicking on the Project ID dropdown in the top navigation menu.
+![image](https://user-images.githubusercontent.com/60198979/138274729-5e9f6fb0-dc1b-406f-a4f8-1440b6a4befd.png)
+
+  gs://<bucket-name>/train_and_apply.py
+
+For Max restarts per hour, enter 1.
+
+Click Submit.
+
+Select Navigation menu > Dataproc > Job tab to see the Job status.
+  
+# Task 9. Explore inserted rows with SQL
+In a new browser tab, open SQL (in the Databases section).
+
+Click rentals to view details related to your Cloud SQL instance.
+
+Under Connect to this instance section, click Open Cloud Shell. This will start a new Cloud Shell tab. In the Cloud Shell tab press ENTER.
+
+It will take a few minutes to allow your IP for the incoming connection.
+
+When prompted, type the root password you configured, then press ENTER.
+
+At the mysql prompt, type:
+  
+USE recommendation_spark;
+SELECT COUNT(*) AS count FROM Recommendation;
+  
+If you are getting an Empty Set (0) - wait for your Dataproc job to complete. If it's been more than 5 minutes, your job has likely failed and will require troubleshooting.
+
+Tip: You can use the up arrow in Cloud Shell to return your previous command (or query in this case)
+  
+Find the recommendations for a user:
+  
+SELECT
+    r.userid,
+    r.accoid,
+    r.prediction,
+    a.title,
+    a.location,
+    a.price,
+    a.rooms,
+    a.rating,
+    a.type
+FROM Recommendation as r
+JOIN Accommodation as a
+ON r.accoid = a.id
+WHERE r.userid = 10;
+  
+Your result should be similar to the below result:
+  
++--------+--------+------------+-----------------------------+...
+| userid | accoid | prediction | title                       |...
++--------+--------+------------+-----------------------------+...
+| 10     | 41     |  1.7748766 | Big Calm Manor              |...
+| 10     | 21     |  1.7174504 | Big Peaceful Cabin          |...
+| 10     | 46     |  1.7159091 | Colossal Private Castle     |...
+| 10     | 31     |  1.5783813 | Colossal Private Castle     |...
+| 10     | 32     |  1.5584077 | Immense Private Hall        |...
++--------+--------+------------+-----------------------------+...
+  
+ These are the five accommodations that you would recommend. Note that the quality of the recommendations is not great because the dataset was so small (note that the predicted ratings are not very high). Still, this lab illustrates the process you'd go through to create product recommendations.
+  
+# Recap:
+In this lab, you:
+
+Created a fully-managed Cloud SQL instance for rentals
+Created tables and explored the schema with SQL
+Ingested data from CSVs
+Edited and ran a Spark ML job on Dataproc
+Viewed prediction results
 
 
